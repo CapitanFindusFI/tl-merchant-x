@@ -1,10 +1,10 @@
 import express from 'express';
 import { SERVER_PORT } from './config';
-import logger from './lib/logger';
+import Logger from './lib/logger';
 
 const app = express();
-const log = logger();
+const logger = Logger.getLogger()
 
 app.listen(SERVER_PORT, () => {
-  log.info(`Server running on port: ${SERVER_PORT}`);
+  logger.info(`Server running on port: ${SERVER_PORT}`);
 });
