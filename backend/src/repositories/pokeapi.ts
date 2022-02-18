@@ -12,6 +12,7 @@ export default () => {
 
     const getPokemon = async (name: string) => {
         try {
+            logger.debug(`Retrieving pokemon data for ${name}`);
             const { data } = await httpClient.get<PokemonResponse>(`${baseAPIUrl}/pokemon/${name}`);
             return data;
         } catch (e) {
@@ -22,6 +23,7 @@ export default () => {
 
     const getPokemonSpecies = async (name: string): Promise<PokemonSpeciesResponse> => {
         try {
+            logger.debug(`Retrieving pokemon species data for ${name}`);
             const { data } = await httpClient.get<PokemonSpeciesResponse>(`${baseAPIUrl}/pokemon-species/${name}`)
             return data;
         } catch (e) {

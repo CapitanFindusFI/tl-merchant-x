@@ -3,6 +3,7 @@ import Logger from "../lib/logger";
 import funTranslations from "../repositories/fun-translations";
 import pokeapi from "../repositories/pokeapi"
 import { clearString } from '../utils';
+import { PokemonApiResponse } from '../types/responses';
 
 export default () => {
     const logger = Logger.getLogger().child({
@@ -43,7 +44,7 @@ export default () => {
         }
     }
 
-    const getPokemon = async (name: string) => {
+    const getPokemon = async (name: string): Promise<PokemonApiResponse> => {
         let pokemon, species, description;
         try {
             [pokemon, species] = await fetchPokemon(name);
@@ -53,8 +54,6 @@ export default () => {
             throw e;
         }
 
-        logger.info(`Initial description: ${description}`);
-
         let translated;
         try {
             translated = await fetchTranslation(description);
@@ -62,8 +61,6 @@ export default () => {
             logger.error(e);
             throw e;
         }
-
-        logger.info(`Translated description: ${description}`);
 
         return {
             name: pokemon.name,

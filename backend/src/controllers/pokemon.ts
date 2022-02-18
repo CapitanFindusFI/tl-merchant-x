@@ -7,7 +7,6 @@ const logger = Logger.getLogger().child({
     controller: "pokemon"
 });
 
-
 const router = express.Router();
 
 router.get(

@@ -1,14 +1,3 @@
-export type PokdexAPIEntryType = {
-    name: string;
-    url: string;
-};
-
-export type PokedexAPITextItemType = {
-    flavor_text: string;
-    language: PokdexAPIEntryType;
-    version: PokdexAPIEntryType;
-};
-
 export type BasePokemonResponse = {
     name: string;
 }
@@ -25,6 +14,17 @@ export type PokemonResponse = BasePokemonResponse & {
         front_shiny_female: string
     }
 }
+
+export type PokdexAPIEntryType = {
+    name: string;
+    url: string;
+};
+
+export type PokedexAPITextItemType = {
+    flavor_text: string;
+    language: PokdexAPIEntryType;
+    version: PokdexAPIEntryType;
+};
 
 export type PokemonSpeciesResponse = BasePokemonResponse & {
     is_legendary: boolean;

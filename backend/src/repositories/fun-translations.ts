@@ -7,12 +7,12 @@ export default () => {
         repository: "translation"
     });
 
-    const baseAPIUrl = "https://api.funtranslations.com/translate";
-
     const httpClient = HttpClient.getClient();
+    const baseAPIUrl = "https://api.funtranslations.com/translate";
 
     const getTranslation = async (text: string): Promise<string> => {
         try {
+            logger.debug(`Retrieving shakespeare translation`);
             const { data } = await httpClient.post<TranslationResponse>(`${baseAPIUrl}/shakespeare`, { text });
             const { success, contents } = data;
             if (success.total !== 1) {
