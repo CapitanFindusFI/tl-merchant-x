@@ -1,6 +1,6 @@
 import HttpException from "./http-exception";
 
-class PokemonNotFound extends Error implements HttpException {
+class GenericHttpError extends Error implements HttpException {
     private _httpStatus!: number;
     private _errorCode!: string;
 
@@ -20,9 +20,10 @@ class PokemonNotFound extends Error implements HttpException {
     constructor(msg?: string) {
         super(msg);
 
-        this.httpStatus = 404;
-        this.errorCode = "pokemon_not_found";
+        this.httpStatus = 500;
+        this.errorCode = "server_error";
     }
+
 }
 
-export default PokemonNotFound;
+export default GenericHttpError;
