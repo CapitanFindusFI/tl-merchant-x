@@ -1,0 +1,10 @@
+{
+  "name": "tl-merchant-x-frontend",
+  "version": "1.0.0",
+  "description": "TL Merchant X challenge frontend",
+  "main": "dist/index.js",
+  "repository": "https://github.com/CapitanFindusFI/tl-merchant-x",
+  "author": "CapitanFindusFI <am95.dev@gmail.com>",
+  "license": "MIT",
+  "private": true
+}
