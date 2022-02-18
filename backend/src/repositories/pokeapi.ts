@@ -1,3 +1,5 @@
+import axios from "axios";
+import PokemonNotFound from "../exceptions/pokemon-not-found";
 import HttpClient from "../lib/http-client"
 import Logger from "../lib/logger";
 import { PokemonResponse, PokemonSpeciesResponse } from "../types/pokeapi";
@@ -17,6 +19,15 @@ export default () => {
             return data;
         } catch (e) {
             logger.error(e);
+            if (axios.isAxiosError(e)) {
+                const status = e.response?.status;
+                if (status) {
+                    switch (status) {
+                        case 404:
+                            throw new PokemonNotFound(`Pokemon not found`);
+                    }
+                }
+            }
             throw e;
         }
     }
@@ -28,6 +39,15 @@ export default () => {
             return data;
         } catch (e) {
             logger.error(e);
+            if (axios.isAxiosError(e)) {
+                const status = e.response?.status;
+                if (status) {
+                    switch (status) {
+                        case 404:
+                            throw new PokemonNotFound(`Pokemon not found`);
+                    }
+                }
+            }
             throw e;
         }
     }

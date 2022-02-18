@@ -1,3 +1,4 @@
+import TranslationError from '../exceptions/translation-error';
 import HttpClient from '../lib/http-client';
 import Logger from '../lib/logger';
 import { TranslationResponse } from '../types/translations';
@@ -16,13 +17,13 @@ export default () => {
             const { data } = await httpClient.post<TranslationResponse>(`${baseAPIUrl}/shakespeare`, { text });
             const { success, contents } = data;
             if (success.total !== 1) {
-                throw new Error("Unable to retrieve translation");
+                throw new TranslationError();
             }
 
             return contents.translated;
         } catch (e) {
             logger.error(e);
-            throw e;
+            throw new TranslationError();
         }
     }
 
