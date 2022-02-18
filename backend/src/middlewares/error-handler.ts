@@ -10,7 +10,7 @@ export default (
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     next: NextFunction
 ) => {
-    const isHttpException = (object: any): object is HttpException => {
+    const isHttpException = (object: object): object is HttpException => {
         return "errorCode" in object;
     }
 
