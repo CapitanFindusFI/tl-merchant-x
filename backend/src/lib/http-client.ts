@@ -1,14 +1,15 @@
-import axios, { AxiosInstance } from "axios";
+import axios, { AxiosInstance } from 'axios';
 
 class HttpClient {
-    private static instance: AxiosInstance;
+  private static instance: AxiosInstance;
 
-    static getInstance() {
-        if (!HttpClient.instance) {
-            HttpClient.instance = axios.create();
-        }
-        return HttpClient.instance;
+  static getClient() {
+    if (!HttpClient.instance) {
+      HttpClient.instance = axios.create();
     }
+
+    return HttpClient.instance;
+  }
 }
 
 export default HttpClient;

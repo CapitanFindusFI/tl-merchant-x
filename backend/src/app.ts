@@ -1,6 +1,6 @@
 import express from 'express';
 import { SERVER_PORT } from './config';
-import logger from './logger';
+import logger from './lib/logger';
 
 const app = express();
 const log = logger();
