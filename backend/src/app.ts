@@ -8,9 +8,9 @@ import PokemonController from "./controllers/pokemon"
 const app = express();
 const logger = Logger.getLogger()
 
-app.use(RootController);
-app.use(HealthcheckController);
-app.use(PokemonController);
+app.use("/", RootController);
+app.use("/healthcheck", HealthcheckController);
+app.use("/pokemon", PokemonController);
 
 app.listen(SERVER_PORT, () => {
   logger.info(`Server running on port: ${SERVER_PORT}`);
