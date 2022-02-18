@@ -9,9 +9,25 @@ export type PokedexAPITextItemType = {
     version: PokdexAPIEntryType;
 };
 
-export type PokedexAPIResponse = {
-    is_legendary: boolean;
+export type BasePokemonResponse = {
     name: string;
+}
+
+export type PokemonResponse = BasePokemonResponse & {
+    sprites: {
+        back_default: string
+        back_female: string
+        back_shiny: string
+        back_shiny_female: string
+        front_default: string
+        front_female: string
+        front_shiny: string
+        front_shiny_female: string
+    }
+}
+
+export type PokemonSpeciesResponse = BasePokemonResponse & {
+    is_legendary: boolean;
     habitat: PokdexAPIEntryType;
     flavor_text_entries: PokedexAPITextItemType[];
-};
+}
