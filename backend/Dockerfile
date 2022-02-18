@@ -8,8 +8,8 @@ RUN npm install
 
 COPY . .
 
-RUN npm build
+RUN npm run build
 
 EXPOSE 6556
 
-CMD ["npm run start"]
+CMD ["node", "dist/app.js"]

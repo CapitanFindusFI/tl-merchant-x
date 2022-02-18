@@ -18,3 +18,7 @@ app.use(errorHandler)
 app.listen(SERVER_PORT, SERVER_HOST, () => {
   logger.info(`Server running on: ${SERVER_HOST}:${SERVER_PORT}`);
 });
+
+process.on('SIGINT', function () {
+  process.exit();
+});
