@@ -2,6 +2,7 @@ import { PokemonResponse, PokemonSpeciesResponse } from './../types/pokeapi';
 import Logger from "../lib/logger";
 import funTranslations from "../repositories/fun-translations";
 import pokeapi from "../repositories/pokeapi"
+import { clearString } from '../utils';
 
 export default () => {
     const logger = Logger.getLogger().child({
@@ -14,10 +15,9 @@ export default () => {
     const extractDescription = (pokemon: PokemonSpeciesResponse): string => {
         const { flavor_text_entries } = pokemon;
 
-        const fullENDescription = flavor_text_entries.filter(({ language }) => language.name === "en")
-        const fullDescription = fullENDescription.map(item => item.flavor_text).join(" ");
+        const fullENDescription = flavor_text_entries.filter(({ language }) => language.name === "en")[0].flavor_text
 
-        return fullDescription
+        return clearString(fullENDescription)
     }
 
     const fetchTranslation = async (description: string): Promise<string> => {
@@ -53,6 +53,8 @@ export default () => {
             throw e;
         }
 
+        logger.info(`Initial description: ${description}`);
+
         let translated;
         try {
             translated = await fetchTranslation(description);
@@ -60,6 +62,8 @@ export default () => {
             logger.error(e);
             throw e;
         }
+
+        logger.info(`Translated description: ${description}`);
 
         return {
             name: pokemon.name,

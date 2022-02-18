@@ -8,11 +8,11 @@ export default () => {
     });
 
     const httpClient = HttpClient.getClient();
-    const APIBaseUrl = "https://pokeapi.co/api/v2/";
+    const baseAPIUrl = "https://pokeapi.co/api/v2/";
 
     const getPokemon = async (name: string) => {
         try {
-            const { data } = await httpClient.get<PokemonResponse>(`${APIBaseUrl}/pokemon/${name}`);
+            const { data } = await httpClient.get<PokemonResponse>(`${baseAPIUrl}/pokemon/${name}`);
             return data;
         } catch (e) {
             logger.error(e);
@@ -22,7 +22,7 @@ export default () => {
 
     const getPokemonSpecies = async (name: string): Promise<PokemonSpeciesResponse> => {
         try {
-            const { data } = await httpClient.get<PokemonSpeciesResponse>(`${APIBaseUrl}/pokemon-species/${name}`)
+            const { data } = await httpClient.get<PokemonSpeciesResponse>(`${baseAPIUrl}/pokemon-species/${name}`)
             return data;
         } catch (e) {
             logger.error(e);

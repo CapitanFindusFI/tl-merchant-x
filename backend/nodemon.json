@@ -1,0 +1,14 @@
+{
+    "env": {
+        "LOG_LEVEL": "debug"
+    },
+    "watch": [
+        "./src"
+    ],
+    "ignore": [
+        "*.test.ts"
+    ],
+    "delay": 2000,
+    "ext": "ts",
+    "signal": "SIGTERM"
+}

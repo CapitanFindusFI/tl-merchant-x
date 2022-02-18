@@ -7,11 +7,13 @@ export default () => {
         repository: "translation"
     });
 
+    const baseAPIUrl = "https://api.funtranslations.com/translate";
+
     const httpClient = HttpClient.getClient();
 
     const getTranslation = async (text: string): Promise<string> => {
         try {
-            const { data } = await httpClient.post<TranslationResponse>("https://api.funtranslations.com/translate", { text });
+            const { data } = await httpClient.post<TranslationResponse>(`${baseAPIUrl}/shakespeare`, { text });
             const { success, contents } = data;
             if (success.total !== 1) {
                 throw new Error("Unable to retrieve translation");
