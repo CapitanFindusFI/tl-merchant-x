@@ -1,6 +1,6 @@
 import HttpException from "./http-exception";
 
-class PokemonNotFound extends Error implements HttpException {
+class TranslationError extends Error implements HttpException {
     private _httpStatus!: number;
     private _errorCode!: string;
 
@@ -25,4 +25,4 @@ class PokemonNotFound extends Error implements HttpException {
     }
 }
 
-export default PokemonNotFound;
+export default TranslationError;

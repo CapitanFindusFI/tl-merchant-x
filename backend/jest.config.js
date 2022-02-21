@@ -13,5 +13,4 @@ module.exports = {
   coverageProvider: "v8",
   moduleFileExtensions: ["js", "ts", "json", "node"],
   rootDir: "./src",
-  roots: ["./src"],
 };

@@ -24,7 +24,7 @@ export default () => {
                 if (status) {
                     switch (status) {
                         case 404:
-                            throw new PokemonNotFound(`Pokemon not found`);
+                            throw new PokemonNotFound(`Pokemon ${name} not found`);
                     }
                 }
             }
@@ -44,7 +44,7 @@ export default () => {
                 if (status) {
                     switch (status) {
                         case 404:
-                            throw new PokemonNotFound(`Pokemon not found`);
+                            throw new PokemonNotFound(`Pokemon ${name} not found`);
                     }
                 }
             }
