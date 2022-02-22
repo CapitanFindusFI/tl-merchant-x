@@ -16,16 +16,22 @@ describe('fun translation repository test', () => {
         jest.clearAllMocks();
     });
 
-    it('should throw a translation error', () => {
-        const mockedResponse = { data: {}, status: 500 }
+    it('should throw a translation error', async () => {
+        const mockedResponse = { data: {}, response: { status: 500 } }
         mockedAxios.post.mockImplementationOnce(() => Promise.reject(mockedResponse))
 
-        expect(async () => {
+        try {
             await repository.getTranslation("foo");
-        }).rejects.toBeInstanceOf(TranslationError)
+        } catch (e) {
+            expect(e).toBeInstanceOf(TranslationError);
+            expect(e).toHaveProperty("httpStatus");
+            expect((e as TranslationError).httpStatus).toBe(500);
+            expect(e).toHaveProperty("errorCode");
+            expect((e as TranslationError).errorCode).toBe("translation_error");
+        }
     })
 
-    it('should throw another translation error due to missing translation', () => {
+    it('should throw another translation error due to missing translation', async () => {
         const mockedResponse = {
             data: {
                 success: { total: 0 },
@@ -34,9 +40,11 @@ describe('fun translation repository test', () => {
         }
         mockedAxios.post.mockImplementationOnce(() => Promise.resolve(mockedResponse))
 
-        expect(async () => {
+        try {
             await repository.getTranslation("foo");
-        }).rejects.toBeInstanceOf(TranslationError)
+        } catch (e) {
+            expect(e).toBeInstanceOf(TranslationError);
+        }
     })
 
     it('should return a translation', async () => {
@@ -45,8 +53,8 @@ describe('fun translation repository test', () => {
                 success: { total: 1 },
                 contents: {
                     translated: 'bar',
-                    text: '',
-                    translation: '',
+                    text: 'foo',
+                    translation: 'shakespeare',
                 }
             }, status: 200
         }

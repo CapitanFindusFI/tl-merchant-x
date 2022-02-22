@@ -16,40 +16,60 @@ describe('pokeapi repository test', () => {
         jest.clearAllMocks();
     });
 
-    it('should throw a generic error while retrieving pokemon', () => {
-        const mockedResponse = { data: {}, status: 500 }
+    it('should throw a generic error while retrieving pokemon', async () => {
+        const mockedResponse = { data: {}, response: { status: 500 } }
         mockedAxios.get.mockImplementationOnce(() => Promise.reject(mockedResponse))
 
-        expect(async () => {
+        try {
             await repository.getPokemon("foo");
-        }).rejects.toThrow();
+        } catch (e) {
+            expect(e).toBeDefined();
+        }
     })
 
-    it('should throw a pokemon not found error while retrieving pokemon', () => {
-        const mockedResponse = { data: {}, status: 404, isAxiosError: true }
+    it('should throw a pokemon not found error while retrieving pokemon', async () => {
+        const mockedResponse = { data: {}, response: { status: 404 } }
         mockedAxios.get.mockImplementationOnce(() => Promise.reject(mockedResponse))
+        mockedAxios.isAxiosError.mockImplementationOnce(() => true)
 
-        expect(async () => {
+        try {
             await repository.getPokemon("foo");
-        }).rejects.toBeInstanceOf(PokemonNotFound)
+        } catch (e) {
+            expect(e).toBeInstanceOf(PokemonNotFound);
+
+            expect(e).toHaveProperty('httpStatus');
+            expect((e as PokemonNotFound).httpStatus).toBe(404);
+            expect(e).toHaveProperty('errorCode');
+            expect((e as PokemonNotFound).errorCode).toBe("pokemon_not_found");
+        }
     })
 
-    it('should throw a generic error while retrieving pokemon species', () => {
-        const mockedResponse = { data: {}, status: 500 }
+    it('should throw a generic error while retrieving pokemon species', async () => {
+        const mockedResponse = { data: {}, response: { status: 500 } }
         mockedAxios.get.mockImplementationOnce(() => Promise.reject(mockedResponse))
 
-        expect(async () => {
+        try {
             await repository.getPokemonSpecies("foo");
-        }).rejects.toThrow();
+        } catch (e) {
+            expect(e).toBeDefined();
+        }
     })
 
-    it('should throw a pokemon not found error while retrieving pokemon species', () => {
-        const mockedResponse = { data: {}, status: 404, isAxiosError: true }
+    it('should throw a pokemon not found error while retrieving pokemon species', async () => {
+        const mockedResponse = { data: {}, response: { status: 404 } }
         mockedAxios.get.mockImplementationOnce(() => Promise.reject(mockedResponse))
+        mockedAxios.isAxiosError.mockImplementationOnce(() => true)
 
-        expect(async () => {
+        try {
             await repository.getPokemonSpecies("foo");
-        }).rejects.toBeInstanceOf(PokemonNotFound)
+        } catch (e) {
+            expect(e).toBeInstanceOf(PokemonNotFound);
+
+            expect(e).toHaveProperty('httpStatus');
+            expect((e as PokemonNotFound).httpStatus).toBe(404);
+            expect(e).toHaveProperty('errorCode');
+            expect((e as PokemonNotFound).errorCode).toBe("pokemon_not_found");
+        }
     })
 
     it('should return a pokemon sprite with "getPokemonSpecies"', async () => {
