@@ -28,6 +28,5 @@ export type PokedexAPITextItemType = {
 
 export type PokemonSpeciesResponse = BasePokemonResponse & {
     is_legendary: boolean;
-    habitat: PokdexAPIEntryType;
     flavor_text_entries: PokedexAPITextItemType[];
 }
