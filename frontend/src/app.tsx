@@ -1,7 +1,22 @@
 import React from "react";
+import PageTitle from "./components/page-title";
+import SearchForm from "./components/search-form";
+import BoxedContainer from "./layout/boxed-container";
+import FullwidthContainer from "./layout/fullwidth-container";
 
 const App = () => {
-  return <h1>Welcome to your Pokedex!</h1>;
+  const onQueryChange = (value: string) => {
+    console.log(`Value set: ${value}`);
+  };
+
+  return (
+    <FullwidthContainer>
+      <BoxedContainer>
+        <PageTitle>Pokedex</PageTitle>
+        <SearchForm onValueSet={onQueryChange} />
+      </BoxedContainer>
+    </FullwidthContainer>
+  );
 };
 
 export default App;
