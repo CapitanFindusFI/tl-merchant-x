@@ -14,11 +14,17 @@ export const Wrapper = styled.form`
 `
 
 export const FormSubmit = styled.button`
-    border-radius: ${formRadius};
+    border-top-right-radius: ${formRadius};
+    border-bottom-right-radius: ${formRadius};
     border: 0;
     padding: 0 2rem;
     cursor: pointer;
+    transition: all 300ms ease-in-out;
+    background-color: rgba(3, 0, 39, 1);
+    color: #fff;
     &[disabled]{
+        background-color: rgba(3, 0, 39, .4);
+        color: #030027;
         cursor: initial;
     }
 `
@@ -32,7 +38,7 @@ export const FormInput = styled.input`
     padding: 0 0.5rem;
     border: 0;
     &:focus {
-        border-color: #80bdff;
-        box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
+        border-color: rgb(3, 0, 39);
+        box-shadow: 0 0 0 0.2rem rgba(3, 0, 39, 20%);
     }
 `

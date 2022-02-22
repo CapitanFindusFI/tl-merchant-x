@@ -1,17 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { useTranslation } from "react-i18next";
 import useDebounce from "../../hooks/use-debounce";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import * as S from "./styles";
 
 type PropsType = {
-  onValueSet: (query: string) => void;
+  onFormSubmit: () => void;
 };
 
 const SearchForm: React.FC<PropsType> = (props: PropsType) => {
-  const [t] = useTranslation();
-  const [searchTerm, setSearchTerm] = useState<string>("");
+  const { onFormSubmit } = props;
 
-  const debouncedTerm = useDebounce(searchTerm, 300);
+  const [t] = useTranslation();
+  const dispatch = useAppDispatch();
+  const { query, isLoading } = useAppSelector((state) => state.search);
+
+  const debouncedTerm = useDebounce(query, 300);
 
   useEffect(() => {
     if (debouncedTerm) {
@@ -19,30 +25,37 @@ const SearchForm: React.FC<PropsType> = (props: PropsType) => {
     }
   }, [debouncedTerm]);
 
+  const isSubmitDisabled = useMemo(() => {
+    return query.length <= 2 || isLoading;
+  }, [query, isLoading]);
+
   const onInputChange = (e: React.KeyboardEvent<HTMLInputElement>) => {
     e.preventDefault();
-    setSearchTerm(e.currentTarget.value);
+    dispatch({
+      type: "@search/setQuery",
+      payload: e.currentTarget.value,
+    });
   };
 
-  const onSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    onFormSubmit();
   };
 
   return (
-    <S.Wrapper role="search">
+    <S.Wrapper role="search" onSubmit={onSubmit}>
       <S.FormInput
         tabIndex={0}
         placeholder={t("search.placeholder")}
         onKeyUp={onInputChange}
       />
       <S.FormSubmit
-        type="button"
+        type="submit"
         tabIndex={1}
-        aria-disabled={!debouncedTerm.length}
-        disabled={!debouncedTerm.length}
-        onClick={onSubmit}
+        aria-disabled={isSubmitDisabled}
+        disabled={isSubmitDisabled}
       >
-        X
+        <FontAwesomeIcon icon={faMagnifyingGlass} />
       </S.FormSubmit>
     </S.Wrapper>
   );
