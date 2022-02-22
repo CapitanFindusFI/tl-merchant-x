@@ -16,9 +16,9 @@ export default () => {
     const extractDescription = (pokemon: PokemonSpeciesResponse): string => {
         const { flavor_text_entries } = pokemon;
 
-        const fullENDescription = flavor_text_entries.filter(({ language }) => language.name === "en")[0].flavor_text
+        const englishDescription = flavor_text_entries.filter(({ language }) => language.name === "en")[0].flavor_text
 
-        return clearString(fullENDescription)
+        return clearString(englishDescription)
     }
 
     const fetchTranslation = async (description: string): Promise<string> => {

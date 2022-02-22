@@ -72,6 +72,19 @@ describe('pokedex service test suite', () => {
         expect(name).toBe("celebi");
     })
 
+    it('should check for a cleared string', async () => {
+        jest.mock('../repositories/fun-translations', () => {
+            return jest.fn().mockImplementation(() => {
+                return {
+                    getTranslation: () => Promise.resolve("never\n gonna  let\f you down")
+                }
+            })
+        });
+
+        const response = await service.getPokemon("celebi");
+        expect(response.description).toBe("never gonna let you down")
+    })
+
     it('should return a cleared string', async () => {
         jest.mock('../repositories/pokeapi', () => {
             return jest.fn().mockImplementation(() => {
