@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const { DefinePlugin } = require("webpack");
 
 module.exports = {
   entry: path.join(__dirname, "src", "index.tsx"),
@@ -25,6 +26,9 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
+    new DefinePlugin({
+      API_URL: JSON.stringify(process.env.API_URL),
+    }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "public", "index.html"),
     }),
