@@ -37,7 +37,9 @@ const Pokedex: React.FC = () => {
     <SearchResult pokemon={result} />
   ) : isLoading ? (
     <Spinner />
-  ) : error ? null : null;
+  ) : error ? (
+    <S.PokedexError label="search.error" />
+  ) : null;
 
   return (
     <S.Wrapper>
