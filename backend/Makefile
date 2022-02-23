@@ -1,9 +1,9 @@
-IMAGE_NAME=tl-merchantx-backend
+IMAGE_NAME=tl-merchantx-backend:local
 
 .PHONY: build
 build:
-	@docker build -t $(IMAGE) ../
+	@docker build . -t $(IMAGE_NAME)
 
 .PHONY: run
 run:
-	@docker run -p 6556:6556 $(IMAGE)
+	@docker run -p 6556:6556 $(IMAGE_NAME)
