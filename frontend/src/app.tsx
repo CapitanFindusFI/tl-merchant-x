@@ -24,7 +24,7 @@ const App = () => {
     try {
       setLoading(true);
 
-      const { data } = await httpClient.get<any>(`/${query}`);
+      const { data } = await httpClient.get<any>(`/pokemon/${query}`);
       console.log(data);
     } catch (e) {
       dispatch({

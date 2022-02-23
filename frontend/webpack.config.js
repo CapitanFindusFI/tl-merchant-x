@@ -27,7 +27,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new DefinePlugin({
-      API_URL: JSON.stringify(process.env.API_URL),
+      BASE_API_URL: JSON.stringify(process.env.API_URL),
     }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "public", "index.html"),

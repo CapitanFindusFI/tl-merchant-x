@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from "cors";
 import { SERVER_HOST, SERVER_PORT } from './config';
 import Logger from './lib/logger';
 import RootController from "./controllers/root"
@@ -8,6 +9,8 @@ import ErrorMiddleware from './middlewares/error-middleware';
 
 const app = express();
 const logger = Logger.getLogger()
+
+app.use(cors)
 
 app.use("/", RootController);
 app.use("/healthcheck", HealthcheckController);
