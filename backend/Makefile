@@ -6,4 +6,9 @@ build:
 
 .PHONY: run
 run:
-	@docker run -p 6556:6556 $(IMAGE_NAME)
+	@docker run -p 4001:6556 $(IMAGE_NAME)
+
+.PHONY: build-and-run
+build-and-run:
+	make build
+	make run

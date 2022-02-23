@@ -4,7 +4,6 @@ const formRadius = "10px";
 
 export const Wrapper = styled.form`
     width: 100%;
-    max-width: 360px;
     margin: 2rem auto;
     height: 2.5rem;
     display: flex;

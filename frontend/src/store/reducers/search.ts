@@ -3,20 +3,20 @@ import { createAction, createReducer } from "@reduxjs/toolkit"
 type ReducerType = {
     query: string,
     isLoading: boolean,
-    error: any,
+    error: boolean,
     result: any,
 }
 
 const initialState: ReducerType = {
     query: '',
     isLoading: false,
-    error: null,
+    error: false,
     result: null
 }
 
 const setQuery = createAction<string, "@search/setQuery">("@search/setQuery");
-const setLoading = createAction<boolean, "@search/setLoading">("@search/setLoading");
-const setError = createAction<string, "@search/setError">("@search/setError");
+const setLoading = createAction<null, "@search/setLoading">("@search/setLoading");
+const setError = createAction<null, "@search/setError">("@search/setError");
 const setResult = createAction<any, "@search/setResult">("@search/setResult");
 
 const searchReducer = createReducer(initialState, (builder) => {
@@ -27,19 +27,19 @@ const searchReducer = createReducer(initialState, (builder) => {
                 query: action.payload
             }
         })
-        .addCase(setLoading, (state, action) => {
+        .addCase(setLoading, (state) => {
             return {
                 ...state,
-                isLoading: action.payload,
-                error: null,
+                isLoading: true,
+                error: false,
                 result: null
             }
         })
-        .addCase(setError, (state, action) => {
+        .addCase(setError, (state) => {
             return {
                 ...state,
                 isLoading: false,
-                error: action.payload,
+                error: true,
                 result: null
             }
         })
@@ -47,7 +47,7 @@ const searchReducer = createReducer(initialState, (builder) => {
             return {
                 ...state,
                 isLoading: false,
-                error: null,
+                error: false,
                 result: action.payload
             }
         })
