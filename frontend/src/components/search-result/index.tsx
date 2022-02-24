@@ -9,7 +9,7 @@ type PropsType = {
 const SearchResult: React.FC<PropsType> = ({ pokemon }: PropsType) => {
   const { name, sprite, description } = pokemon;
   return (
-    <S.Wrapper>
+    <S.Wrapper id="search-result">
       <S.Name>{name}</S.Name>
       <S.SpriteContainer>
         <S.Sprite alt={name} src={sprite} />

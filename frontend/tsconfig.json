@@ -17,11 +17,13 @@
             "DOM"
         ],
         "types": [
-            "node"
+            "node",
+            "cypress"
         ]
     },
     "include": [
-        "src/**/*"
+        "src/**/*.ts",
+        "cypress/**/*.ts"
     ],
     "exclude": [
         "node_modules",

@@ -12,3 +12,8 @@ ReactDom.render(
   </Provider>,
   document.getElementById("root")
 );
+
+const _win = window as any;
+if (_win.Cypress) {
+  _win.store = store;
+}

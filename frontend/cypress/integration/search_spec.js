@@ -1,3 +1,0 @@
-describe("pokedex test suite", () => {
-    
-})
