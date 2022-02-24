@@ -1,0 +1,3 @@
+describe("pokedex test suite", () => {
+    
+})
