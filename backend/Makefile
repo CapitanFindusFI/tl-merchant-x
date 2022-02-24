@@ -1,4 +1,4 @@
-IMAGE_NAME=tl-merchantx-backend:local
+IMAGE_NAME=tl-pokemon-backend:local
 
 .PHONY: build
 build:

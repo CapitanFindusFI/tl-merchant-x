@@ -8,7 +8,7 @@ i18next.addResourceBundle("en", "translation", {
   "test.stuff": "replace with {{lyrics}}",
 });
 
-describe("Error Message", () => {
+describe("error message test suite", () => {
   it("should render a missing translation message", () => {
     mount(<ErrorMessage label="rick.astley" />);
 
