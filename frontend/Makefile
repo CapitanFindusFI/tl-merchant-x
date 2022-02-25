@@ -8,6 +8,10 @@ build:
 run:
 	@docker run -p 4000:80 $(IMAGE_NAME)
 
+.PHONY: stop
+stop:
+	@docker stop $(IMAGE_NAME)
+
 .PHONY: build-and-run
 build-and-run:
 	make build

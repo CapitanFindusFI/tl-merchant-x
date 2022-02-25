@@ -10,11 +10,14 @@ COPY . .
 ARG API_URL="http://0.0.0.0:4001"
 ENV API_URL ${API_URL}
 
-RUN npm build
+RUN npm run build
 
 FROM nginx:latest
 
-COPY --from=builder /app/ /var/www
+WORKDIR /usr/share/nginx/html
+
+COPY --from=builder /usr/src/app/dist ./
+COPY public/assets ./assets
 COPY nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 80
