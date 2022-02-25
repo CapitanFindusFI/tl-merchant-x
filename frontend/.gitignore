@@ -1,3 +1,5 @@
+.DS_Store
+
 # Cypress
 cypress/screenshots
 cypress/videos
