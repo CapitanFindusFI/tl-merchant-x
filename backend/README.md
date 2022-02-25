@@ -27,7 +27,7 @@ Express server is being exposed by default on port 6556 which can be changed (fo
 
 ```
 docker build . -t your_image_name
-docker run docker run -p 4001:6556 your_image_name
+docker run -p HOST_PORT:6556 your_image_name
 ```
 There is also a handy makefile which can be used for both operations. Issuing `make build-and-run` in your terminal will execute the docker commands above with a default image name of `tl-pokemon-backend:local`
 
@@ -36,7 +36,7 @@ You can check if it's running by visiting `http://localhost:6556` (or the port y
 ### Running tests
 Tests written with Jest can be run using `npm run test`
 
-#### Available configuration
+## Available configuration
 
 Following here default runtime environment variables which can be changed  
 
@@ -84,7 +84,7 @@ As external services are returning read-only static data, they are definetly sui
 FunTranslations API have a limit of 5 API calls/hour, which is now being handled as a TranslationError returning a 500 HTTP Status. Handling a 429 HTTP Status in a different way (a new custom error code, returning 429 to the client) would be more appropriate.
 
 #### Repositories reliability
-Using an incremental retry strategy for temporary errors would make calling external Pokeapi API or FunTranslations API more reliable.
+Using an incremental retry strategy for temporary errors would make calling external Pokeapi API or FunTranslations API more reliable. Also, when using remote services, a circuit breaker pattern could be used to avoid running out of resources when multiple API calls are failing or hanging. After a defined threshold (like failure rate, timeout), the circuit breaker will be triggered to avoid calling external APIs until a normal situation has restored.
 
 ####  Tracing
 Requests could be marked with a unique Trace ID in order to better handle a request's lifespan from the HTTP call to the response itself. It will make finding bugs, bottlenecks or other issues much easy.
