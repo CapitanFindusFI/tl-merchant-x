@@ -13,7 +13,6 @@ ReactDom.render(
   document.getElementById("root")
 );
 
-const _win = window as any;
-if (_win.Cypress) {
-  _win.store = store;
+if ((window as any).Cypress) {
+  (window as any).store = store;
 }

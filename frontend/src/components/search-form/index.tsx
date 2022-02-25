@@ -30,12 +30,14 @@ const SearchForm: React.FC<PropsType> = (props: PropsType) => {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (isSubmitDisabled) return;
     onFormSubmit();
   };
 
   return (
     <S.Wrapper role="search" onSubmit={onSubmit}>
       <S.FormInput
+        type="text"
         tabIndex={0}
         placeholder={t("search.placeholder")}
         onKeyUp={onInputChange}
