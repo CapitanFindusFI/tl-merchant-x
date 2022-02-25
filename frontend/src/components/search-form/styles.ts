@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { mediaDevices } from "../../constants/device-screens";
 
 const formRadius = "10px";
 
@@ -8,43 +7,40 @@ export const Wrapper = styled.form`
     height: 2.5rem;
     display: flex;
     align-items: stretch;
-    border-radius: ${formRadius};
-    border: 1px solid #ccc;
     margin-bottom: 2rem;
+    position: relative;
 `
 
 export const FormSubmit = styled.button`
-    border-top-right-radius: ${formRadius};
-    border-bottom-right-radius: ${formRadius};
     border: 0;
-    padding: 0 1.25rem;
     cursor: pointer;
-    transition: all 300ms ease-in-out;
-    background-color: rgba(3, 0, 39, 1);
-    color: #fff;
+    color: var(--palette-blue);
+    background-color: transparent;
+    position: absolute;
+    height: 100%;
+    right: 0.5rem;
+    top: 0;
+    opacity: 1;
+    padding: 0;
+    transition: opacity 300ms ease-in-out;
     &[disabled]{
-        background-color: rgba(3, 0, 39, .4);
-        color: #030027;
+        color: var(--palette-white);
         cursor: initial;
-    }
-    @media ${mediaDevices.mobileL}{
-        padding: 0 1.5rem;
-    }
-    @media ${mediaDevices.tablet}{
-        padding: 0 2rem;
+        opacity: 0;
     }
 `
 
 export const FormInput = styled.input`
     flex: 1;
-    border-top-left-radius: ${formRadius};
-    border-bottom-left-radius: ${formRadius};
+    border-radius: inherit;
     outline: none;
     font-size: 0.825rem;
-    padding: 0 0.5rem;
+    padding: 0 1.5rem 0 0.5rem;
     border: 0;
+    border-radius: ${formRadius};
+    border: 2px solid var(--palette-white);
     &:focus {
-        border-color: rgb(3, 0, 39);
-        box-shadow: 0 0 0 0.2rem rgba(3, 0, 39, 20%);
+        border-color: var(--palette-white);
+        box-shadow: 0px 0px 10px 2px var(--palette-white);
     }
 `

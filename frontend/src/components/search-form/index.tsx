@@ -21,12 +21,11 @@ const SearchForm: React.FC<PropsType> = (props: PropsType) => {
     return query.length <= 2 || isLoading;
   }, [query, isLoading]);
 
-  const onInputChange = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const onInputChange = (e: React.KeyboardEvent<HTMLInputElement>) =>
     dispatch({
       type: "@search/setQuery",
       payload: e.currentTarget.value,
     });
-  };
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

@@ -11,9 +11,11 @@ const SearchResult: React.FC<PropsType> = ({ pokemon }: PropsType) => {
   return (
     <S.Wrapper id="search-result">
       <S.Name>{name}</S.Name>
-      <S.SpriteContainer>
-        <S.Sprite alt={name} src={sprite} />
-      </S.SpriteContainer>
+      <S.Sprite
+        imageSrc={sprite}
+        imageAlt={name}
+        fallbackText={name.substring(0, 2)}
+      />
       <S.Description>{description}</S.Description>
     </S.Wrapper>
   );

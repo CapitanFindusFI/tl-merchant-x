@@ -2,6 +2,7 @@ import React from "react";
 import httpClient from "../../lib/api";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { PokemonResponse } from "../../types";
+import PageTitle from "../page-title";
 import SearchForm from "../search-form";
 import SearchResult from "../search-result";
 import Spinner from "../spinner";
@@ -43,6 +44,7 @@ const Pokedex: React.FC = () => {
 
   return (
     <S.Wrapper>
+      <PageTitle>Pokédex</PageTitle>
       <SearchForm onFormSubmit={onFormSubmit} />
       {showingContent}
     </S.Wrapper>

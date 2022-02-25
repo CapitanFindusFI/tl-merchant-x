@@ -1,6 +1,9 @@
 import styled from "styled-components";
+import SimpleImage from "../simple-image";
 
 export const Wrapper = styled.div`
+    color: var(--palette-white);
+    text-align: center;
 `
 
 export const Name = styled.h2`
@@ -9,19 +12,9 @@ export const Name = styled.h2`
     text-transform: capitalize;
 `
 
-export const Sprite = styled.img`    
-`
-
-export const SpriteContainer = styled.div`
-    background-color: #f4f4f4;
-    width: 8rem;
-    height: 8rem;
+export const Sprite = styled(SimpleImage)`
+    margin: 1rem auto;
     border-radius: 50%;
-    margin-bottom: 1rem;
-    ${Sprite}{
-        height: 100%;
-        width: 100%;
-    }
 `
 
 export const Description = styled.p`

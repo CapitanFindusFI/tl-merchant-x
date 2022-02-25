@@ -5,6 +5,13 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
     }
 
+    :root {
+        --palette-black: #00171F;
+        --palette-white: #ffffff;
+        --palette-blue: #003459;
+        --palette-red: #dc3545;
+    }
+
     body, html {
         padding: 0;
         margin: 0;
@@ -12,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        background-color: #f6f6f6;
+        background-color: var(--palette-black);
     }
 `
 
