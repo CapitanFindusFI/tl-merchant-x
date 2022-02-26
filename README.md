@@ -19,4 +19,4 @@ Backend server will listen on http://localhost:4001
 ## Areas of improvement
 
 ### CI/CD
-Both projects can be used within a CI/CD pipeline to run tests, build their own docker image with different environment variables based on different deploy environments, and then eventually released on whichever Cloud Provider
+Both projects can be used within a CI/CD pipeline to run tests, build their own docker image with different environment variables based on different deploy environments, and then eventually be released on whichever Cloud Provider
