@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  tl-frontend:
+    build: ./frontend
+    ports:
+      - 4000:80
+  tl-backend:
+    build: ./backend
+    ports:
+      - 4001:6556
