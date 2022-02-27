@@ -96,5 +96,8 @@ In a production-ready environment, metrics are key. We could store data related 
 #### Translations
 Express could read `accept-language` headers to decide which description to pick from PokeAPI instead of picking `en` language only.
 
+#### Integration testing
+Project tests should be updated with integration tests checking HTTP response codes and requests.
+
 #### Test container
 Tests could also be ran using a different Docker build and container, without having `npm` on your machine.
