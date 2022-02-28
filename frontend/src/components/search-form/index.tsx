@@ -35,8 +35,8 @@ const SearchForm: React.FC<PropsType> = (props: PropsType) => {
   };
 
   return (
-    <S.Container>
-      <S.Wrapper role="search" onSubmit={onSubmit}>
+    <S.Container onSubmit={onSubmit}>
+      <S.Wrapper role="search">
         <S.FormInput
           type="text"
           tabIndex={0}
@@ -54,7 +54,7 @@ const SearchForm: React.FC<PropsType> = (props: PropsType) => {
       </S.Wrapper>
       <S.MobileSubmit
         type="submit"
-        tabIndex={1}
+        tabIndex={2}
         aria-disabled={isSubmitDisabled}
         disabled={isSubmitDisabled}
       >

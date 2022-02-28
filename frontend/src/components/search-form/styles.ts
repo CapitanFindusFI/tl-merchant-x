@@ -3,11 +3,11 @@ import styled from "styled-components";
 
 const formRadius = "10px";
 
-export const Container = styled.div`
+export const Container = styled.form`
     width: 100%;
 `
 
-export const Wrapper = styled.form`
+export const Wrapper = styled.div`
     width: 100%;
     height: 2.5rem;
     display: flex;
