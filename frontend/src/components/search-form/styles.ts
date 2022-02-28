@@ -1,4 +1,3 @@
-import { mediaDevices } from './../../constants/device-screens';
 import styled from "styled-components";
 
 const formRadius = "10px";
@@ -17,33 +16,6 @@ export const Wrapper = styled.div`
 `
 
 export const FormSubmit = styled.button`
-    border: 0;
-    cursor: pointer;
-    color: var(--palette-blue);
-    background-color: transparent;
-    position: absolute;
-    height: 100%;
-    right: 0.5rem;
-    top: 0;
-    opacity: 1;
-    padding: 0;
-    transition: opacity 300ms ease-in-out;
-    &[disabled]{
-        color: var(--palette-white);
-        cursor: initial;
-        opacity: 0;
-    }
-    svg {
-        display: none;
-    }
-    @media ${mediaDevices.tablet} {
-        svg {
-            display: block;
-        }
-    }
-`
-
-export const MobileSubmit = styled.button`
     display: block;
     max-width: 100%;
     margin: 0rem auto 0.5rem;
@@ -60,9 +32,6 @@ export const MobileSubmit = styled.button`
     }
     svg {
         margin-left: 1rem;
-    }
-    @media ${mediaDevices.tablet} {
-        display: none;
     }
 `
 

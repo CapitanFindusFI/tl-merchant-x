@@ -43,16 +43,8 @@ const SearchForm: React.FC<PropsType> = (props: PropsType) => {
           placeholder={t("search.placeholder")}
           onKeyUp={onInputChange}
         />
-        <S.FormSubmit
-          type="submit"
-          tabIndex={1}
-          aria-disabled={isSubmitDisabled}
-          disabled={isSubmitDisabled}
-        >
-          <FontAwesomeIcon icon={faMagnifyingGlass} />
-        </S.FormSubmit>
       </S.Wrapper>
-      <S.MobileSubmit
+      <S.FormSubmit
         type="submit"
         tabIndex={2}
         aria-disabled={isSubmitDisabled}
@@ -60,7 +52,7 @@ const SearchForm: React.FC<PropsType> = (props: PropsType) => {
       >
         <TranslatedText label="search.submit" />
         <FontAwesomeIcon icon={faMagnifyingGlass} />
-      </S.MobileSubmit>
+      </S.FormSubmit>
     </S.Container>
   );
 };
