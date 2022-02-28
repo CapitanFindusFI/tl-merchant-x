@@ -1,6 +1,7 @@
 {
     "title": "Pokedex",
     "search": {
+        "submit": "Search",
         "placeholder": "Search for a Pokemon name",
         "error": "There was an error while searching for pokemon. Try again later."
     }

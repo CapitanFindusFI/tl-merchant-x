@@ -1,13 +1,18 @@
+import { mediaDevices } from './../../constants/device-screens';
 import styled from "styled-components";
 
 const formRadius = "10px";
+
+export const Container = styled.div`
+    width: 100%;
+`
 
 export const Wrapper = styled.form`
     width: 100%;
     height: 2.5rem;
     display: flex;
     align-items: stretch;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     position: relative;
 `
 
@@ -27,6 +32,37 @@ export const FormSubmit = styled.button`
         color: var(--palette-white);
         cursor: initial;
         opacity: 0;
+    }
+    svg {
+        display: none;
+    }
+    @media ${mediaDevices.tablet} {
+        svg {
+            display: block;
+        }
+    }
+`
+
+export const MobileSubmit = styled.button`
+    display: block;
+    max-width: 100%;
+    margin: 0rem auto 0.5rem;
+    color: var(--palette-blue);
+    background-color: var(--palette-white);
+    outline: none;
+    padding 0.5rem 1rem;
+    border-radius: ${formRadius};
+    height: initial;
+    &[disabled]{
+        color: var(--palette-blue);
+        background-color: var(--palette-grey);
+        cursor: initial;
+    }
+    svg {
+        margin-left: 1rem;
+    }
+    @media ${mediaDevices.tablet} {
+        display: none;
     }
 `
 

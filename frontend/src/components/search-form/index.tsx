@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { useTranslation } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import TranslatedText from "../translation";
 import * as S from "./styles";
 
 type PropsType = {
@@ -34,22 +35,33 @@ const SearchForm: React.FC<PropsType> = (props: PropsType) => {
   };
 
   return (
-    <S.Wrapper role="search" onSubmit={onSubmit}>
-      <S.FormInput
-        type="text"
-        tabIndex={0}
-        placeholder={t("search.placeholder")}
-        onKeyUp={onInputChange}
-      />
-      <S.FormSubmit
+    <S.Container>
+      <S.Wrapper role="search" onSubmit={onSubmit}>
+        <S.FormInput
+          type="text"
+          tabIndex={0}
+          placeholder={t("search.placeholder")}
+          onKeyUp={onInputChange}
+        />
+        <S.FormSubmit
+          type="submit"
+          tabIndex={1}
+          aria-disabled={isSubmitDisabled}
+          disabled={isSubmitDisabled}
+        >
+          <FontAwesomeIcon icon={faMagnifyingGlass} />
+        </S.FormSubmit>
+      </S.Wrapper>
+      <S.MobileSubmit
         type="submit"
         tabIndex={1}
         aria-disabled={isSubmitDisabled}
         disabled={isSubmitDisabled}
       >
+        <TranslatedText label="search.submit" />
         <FontAwesomeIcon icon={faMagnifyingGlass} />
-      </S.FormSubmit>
-    </S.Wrapper>
+      </S.MobileSubmit>
+    </S.Container>
   );
 };
 
